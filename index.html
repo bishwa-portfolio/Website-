@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -799,6 +799,98 @@
             }
         }
 
+        /* Experience Section Styles */
+        .timeline {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 60px;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: #4a90e2;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            padding-left: 120px;
+            display: flex;
+            align-items: flex-start;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.7s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.9s; }
+
+        .timeline-icon {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #4a90e2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-icon img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-icon img:hover {
+            transform: scale(1.1);
+        }
+
+        .timeline-content {
+            background: #f9f9f9;
+            padding: 20px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content h3 {
+            margin-top: 0;
+            color: #4a90e2;
+            font-size: 1.5rem;
+        }
+
+        .timeline-content p {
+            margin: 10px 0 0 0;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Responsive Styles */
         @media (max-width: 992px) {
             .home-title {
@@ -860,6 +952,17 @@
             #home {
                 padding: 100px 0 60px;
             }
+            
+            .timeline::before {
+                left: 40px;
+            }
+            .timeline-item {
+                padding-left: 90px;
+            }
+            .timeline-icon {
+                width: 70px;
+                height: 70px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -899,7 +1002,7 @@
                 <ul class="nav-links" id="nav-links">
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#portfolio" class="nav-link">experience</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
                     <li><a href="#skills" class="nav-link">Skills</a></li>
                     <li><a href="#achievements" class="nav-link">Achievements</a></li>
                     <li><a href="#gallery" class="nav-link">Gallery</a></li>
@@ -932,229 +1035,101 @@
     </section>
 
     <!-- About Section -->
-<section id="about">
-  <div class="container">
-    <h2 class="section-title">About Me</h2>
-    <div class="about-content">
-      <div class="about-image">
-        <img src="ab.jpg" alt="Portrait of Bishwa Bandhu Aryal">
-      </div>
-      <div class="about-text">
-        <p>I am a dedicated banking professional with over 10 years of experience in the financial sector, currently serving at NIC Asia Bank. My expertise lies in retail banking, customer relationship management, and financial advisory services.</p>
-        
-        <blockquote class="highlight-quote">
-          <p>"Banking is not just about money; it's about building relationships and helping clients achieve their financial goals."</p>
-        </blockquote>
-        
-        <p>Outside of my professional life, I am passionate about financial literacy education and regularly conduct workshops to help people better understand personal finance management. I am also enthusiastic about photography and enjoy traveling, which allows me to explore new cultures and capture unique moments through my lens.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="ab.jpg" alt="Portrait of Bishwa Bandhu Aryal">
+                </div>
+                <div class="about-text">
+                    <p>I am a dedicated banking professional with over 10 years of experience in the financial sector, currently serving at NIC Asia Bank. My expertise lies in retail banking, customer relationship management, and financial advisory services.</p>
+                    
+                    <blockquote class="highlight-quote">
+                        <p>"Banking is not just about money; it's about building relationships and helping clients achieve their financial goals."</p>
+                    </blockquote>
+                    
+                    <p>Outside of my professional life, I am passionate about financial literacy education and regularly conduct workshops to help people better understand personal finance management. I am also enthusiastic about photography and enjoy traveling, which allows me to explore new cultures and capture unique moments through my lens.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Experience Section -->
-<section id="experience">
-  <div class="container">
-    <h2 class="section-title">Professional Experience</h2>
-    <div class="timeline">
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
 
-      <!-- Graphics Designer -->
-      <div class="timeline-item">
-        <div class="timeline-icon">
-          <img src="images/graphics.png" alt="Graphics Designer Icon">
+                <!-- Graphics Designer -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Graphics Designer</h3>
+                        <p>Started professional journey in graphics designing, developing creative and technical skills foundational for future banking roles.</p>
+                        <p><strong>Company/Organization:</strong> [Company Name]</p>
+                        <p><strong>Duration:</strong> [Start Date – End Date]</p>
+                    </div>
+                </div>
+
+                <!-- Supervisor, Tinau Bikas Bank -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Supervisor, Tinau Bikas Bank</h3>
+                        <p>Oversaw branch operations, ensured compliance, and supported local business growth and customer satisfaction.</p>
+                        <p><strong>Company:</strong> Tinau Bikas Bank</p>
+                        <p><strong>Duration:</strong> [Start Date – End Date]</p>
+                    </div>
+                </div>
+
+                <!-- Loan Officer, Mission Development Bank -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Loan Officer, Mission Development Bank</h3>
+                        <p>Managed loan processing and client evaluation, helping individuals and businesses secure financing while maintaining portfolio quality.</p>
+                        <p><strong>Company:</strong> Mission Development Bank</p>
+                        <p><strong>Duration:</strong> [Start Date – End Date]</p>
+                    </div>
+                </div>
+
+                <!-- Project Officer, NIC Asia Bank -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Project Officer, NIC Asia Bank</h3>
+                        <p>Conducted market research and branch feasibility studies, contributing to successful branch expansions and new business opportunities.</p>
+                        <p><strong>Company:</strong> NIC Asia Bank</p>
+                        <p><strong>Duration:</strong> [Start Date – End Date]</p>
+                    </div>
+                </div>
+
+                <!-- Branch Manager, NIC Asia Bank Murgiya -->
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Branch Manager, NIC Asia Bank Murgiya</h3>
+                        <p>Leading branch operations, driving business growth, mentoring staff, and executing strategic plans to ensure customer satisfaction and business success.</p>
+                        <p><strong>Company:</strong> NIC Asia Bank</p>
+                        <p><strong>Duration:</strong> [Start Date – Present]</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="timeline-content">
-          <h3>Graphics Designer</h3>
-          <p>Started professional journey in graphics designing, developing creative and technical skills foundational for future banking roles.</p>
-          <p><strong>Company/Organization:</strong> [Company Name]</p>
-          <p><strong>Duration:</strong> [Start Date – End Date]</p>
-        </div>
-      </div>
+    </section>
 
-      <!-- Supervisor, Tinau Bikas Bank -->
-      <div class="timeline-item">
-        <div class="timeline-icon">
-          <img src="images/tinau.png" alt="Tinau Bikas Bank Logo">
-        </div>
-        <div class="timeline-content">
-          <h3>Supervisor, Tinau Bikas Bank</h3>
-          <p>Oversaw branch operations, ensured compliance, and supported local business growth and customer satisfaction.</p>
-          <p><strong>Company:</strong> Tinau Bikas Bank</p>
-          <p><strong>Duration:</strong> [Start Date – End Date]</p>
-        </div>
-      </div>
-
-      <!-- Loan Officer, Mission Development Bank -->
-      <div class="timeline-item">
-        <div class="timeline-icon">
-          <img src="images/mission.png" alt="Mission Development Bank Logo">
-        </div>
-        <div class="timeline-content">
-          <h3>Loan Officer, Mission Development Bank</h3>
-          <p>Managed loan processing and client evaluation, helping individuals and businesses secure financing while maintaining portfolio quality.</p>
-          <p><strong>Company:</strong> Mission Development Bank</p>
-          <p><strong>Duration:</strong> [Start Date – End Date]</p>
-        </div>
-      </div>
-
-      <!-- Project Officer, NIC Asia Bank -->
-      <div class="timeline-item">
-        <div class="timeline-icon">
-          <img src="images/nic-nic.png" alt="NIC Asia Bank Logo">
-        </div>
-        <div class="timeline-content">
-          <h3>Project Officer, NIC Asia Bank</h3>
-          <p>Conducted market research and branch feasibility studies, contributing to successful branch expansions and new business opportunities.</p>
-          <p><strong>Company:</strong> NIC Asia Bank</p>
-          <p><strong>Duration:</strong> [Start Date – End Date]</p>
-        </div>
-      </div>
-
-      <!-- Branch Manager, NIC Asia Bank Murgiya -->
-      <div class="timeline-item">
-        <div class="timeline-icon">
-          <img src="images/nic.png" alt="NIC Asia Bank Murgiya Branch Logo">
-        </div>
-        <div class="timeline-content">
-          <h3>Branch Manager, NIC Asia Bank Murgiya</h3>
-          <p>Leading branch operations, driving business growth, mentoring staff, and executing strategic plans to ensure customer satisfaction and business success.</p>
-          <p><strong>Company:</strong> NIC Asia Bank</p>
-          <p><strong>Duration:</strong> [Start Date – Present]</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<style>
-/* Container */
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 50px 20px;
-}
-
-/* Section Title */
-.section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 50px;
-  color: #333;
-  font-weight: 700;
-}
-
-/* Timeline */
-.timeline {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 60px;
-  top: 0;
-  width: 4px;
-  height: 100%;
-  background: #4a90e2;
-}
-
-/* Timeline Item */
-.timeline-item {
-  position: relative;
-  margin-bottom: 50px;
-  padding-left: 120px;
-  display: flex;
-  align-items: flex-start;
-  opacity: 0;
-  transform: translateY(50px);
-  animation: fadeUp 0.8s forwards;
-}
-
-.timeline-item:nth-child(1) { animation-delay: 0.1s; }
-.timeline-item:nth-child(2) { animation-delay: 0.3s; }
-.timeline-item:nth-child(3) { animation-delay: 0.5s; }
-.timeline-item:nth-child(4) { animation-delay: 0.7s; }
-.timeline-item:nth-child(5) { animation-delay: 0.9s; }
-
-/* Icon/Image */
-.timeline-icon {
-  position: absolute;
-  left: 0;
-  width: 100px;
-  height: 100px;
-  background: #fff;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 4px solid #4a90e2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.timeline-icon img {
-  width: 70%;
-  height: 70%;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.timeline-icon img:hover {
-  transform: scale(1.1);
-}
-
-/* Content */
-.timeline-content {
-  background: #f9f9f9;
-  padding: 20px 25px;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.timeline-content h3 {
-  margin-top: 0;
-  color: #4a90e2;
-  font-size: 1.5rem;
-}
-
-.timeline-content p {
-  margin: 10px 0 0 0;
-  color: #555;
-  line-height: 1.6;
-}
-
-/* Hover Animation */
-.timeline-content:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-/* Fade Up Animation */
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .timeline::before {
-    left: 40px;
-  }
-  .timeline-item {
-    padding-left: 90px;
-  }
-  .timeline-icon {
-    width: 70px;
-    height: 70px;
-  }
-}
-</style>
     <!-- Skills Section -->
     <section id="skills">
         <div class="container">
@@ -1263,213 +1238,71 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Me</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-info-item">
-                        <i class="fas fa-user"></i>
-                        <div>
-                            <h3>Name</h3>
-                            <p>Bishwa Bandhu Aryal</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>bishwa.aryal@example.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>+977 9841234567</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Location</h3>
-                            <p>Kathmandu, Nepal</p>
-                        </div>
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Location</h3>
+                        <p>Murgiya, Nepal</p>
                     </div>
                 </div>
                 
-                <div class="contact-form">
+                <div class="contact-info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <p>bishwabandhu.aryal@example.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+977 9841234567</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>Availability</h3>
+                        <p>Mon-Fri: 9AM - 5PM</p>
+                        <p>Sat: 9AM - 1PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="contactForm">
                     <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" class="form-control" placeholder="Enter your name">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Your Name" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Your Email" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" class="form-control" placeholder="Enter your message"></textarea>
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" placeholder="Subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" placeholder="Your Message" required></textarea>
                     </div>
                     
                     <button type="submit" class="btn submit-btn">Send Message</button>
-                </div>
+                </form>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <ul class="social-links">
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-            </ul>
-            
-            <div class="copyright">
-                <p>&copy; 2023 Bishwa Bandhu Aryal. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scroll to Top Button -->
-    <a href="#" class="scroll-top" id="scroll-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Create particle background
-            createParticles();
-            
-            // Navigation functionality
-            const menuToggle = document.getElementById('menu-toggle');
-            const navLinks = document.getElementById('nav-links');
-            const navItems = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('section');
-            const scrollTop = document.getElementById('scroll-top');
-            
-            // Menu toggle for mobile
-            menuToggle.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-            });
-            
-            // Navigation click handler
-            navItems.forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Remove active class from all nav items
-                    navItems.forEach(link => link.classList.remove('active'));
-                    
-                    // Add active class to clicked nav item
-                    this.classList.add('active');
-                    
-                    // Hide all sections
-                    sections.forEach(section => section.classList.remove('active'));
-                    
-                    // Show the target section
-                    const targetSection = this.getAttribute('href');
-                    document.querySelector(targetSection).classList.add('active');
-                    
-                    // Close mobile menu if open
-                    navLinks.classList.remove('active');
-                    
-                    // Scroll to top of the page
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            });
-            
-            // Ripple effect for buttons
-            const rippleBtn = document.getElementById('ripple-btn');
-            rippleBtn.addEventListener('click', function(e) {
-                const x = e.clientX - e.target.getBoundingClientRect().left;
-                const y = e.clientY - e.target.getBoundingClientRect().top;
-                
-                const ripple = document.createElement('span');
-                ripple.classList.add('ripple');
-                ripple.style.left = `${x}px`;
-                ripple.style.top = `${y}px`;
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-            
-            // Animate skill bars when section is visible
-            const skillSection = document.getElementById('skills');
-            const skillBars = document.querySelectorAll('.skill-progress');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        skillBars.forEach(bar => {
-                            const width = bar.getAttribute('data-width');
-                            bar.style.width = width;
-                        });
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            observer.observe(skillSection);
-            
-            // Scroll to top functionality
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    scrollTop.classList.add('active');
-                } else {
-                    scrollTop.classList.remove('active');
-                }
-            });
-            
-            scrollTop.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-            
-            // Create particles for background
-            function createParticles() {
-                const particlesContainer = document.getElementById('particles');
-                const numberOfParticles = 30;
-                
-                for (let i = 0; i < numberOfParticles; i++) {
-                    const particle = document.createElement('div');
-                    particle.classList.add('particle');
-                    
-                    // Random size between 5 and 15px
-                    const size = Math.random() * 10 + 5;
-                    particle.style.width = `${size}px`;
-                    particle.style.height = `${size}px`;
-                    
-                    // Random position
-                    const posX = Math.random() * 100;
-                    const posY = Math.random() * 100;
-                    particle.style.left = `${posX}%`;
-                    particle.style.top = `${posY}%`;
-                    
-                    // Random animation delay
-                    const delay = Math.random() * 15;
-                    particle.style.animationDelay = `${delay}s`;
-                    
-                    particlesContainer.appendChild(particle);
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+    </div>
+</section>
+    
