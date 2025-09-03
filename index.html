@@ -75,12 +75,13 @@
             padding: 0 20px;
         }
 
+        /* NOTE: changed so all sections are visible by default (no hiding) */
         section {
             padding: 60px 0;
             min-height: auto;
-            display: none;
-            opacity: 0;
-            transform: translateY(20px);
+            display: block; /* show all sections */
+            opacity: 1;
+            transform: none;
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
@@ -1064,7 +1065,8 @@
                 <!-- Graphics Designer -->
                 <div class="timeline-item">
                     <div class="timeline-icon">
-                        <i class="fas fa-paint-brush"></i>
+                        <!-- replaced icon with PNG -->
+                        <img src="images/graphics.png" alt="Graphics Designer">
                     </div>
                     <div class="timeline-content">
                         <h3>Graphics Designer</h3>
@@ -1077,7 +1079,8 @@
                 <!-- Supervisor, Tinau Bikas Bank -->
                 <div class="timeline-item">
                     <div class="timeline-icon">
-                        <i class="fas fa-user-tie"></i>
+                        <!-- replaced icon with PNG -->
+                        <img src="images/tinau.png" alt="Tinau Bikas Bank">
                     </div>
                     <div class="timeline-content">
                         <h3>Supervisor, Tinau Bikas Bank</h3>
@@ -1090,7 +1093,8 @@
                 <!-- Loan Officer, Mission Development Bank -->
                 <div class="timeline-item">
                     <div class="timeline-icon">
-                        <i class="fas fa-hand-holding-usd"></i>
+                        <!-- replaced icon with PNG -->
+                        <img src="images/mission.png" alt="Mission Development Bank">
                     </div>
                     <div class="timeline-content">
                         <h3>Loan Officer, Mission Development Bank</h3>
@@ -1103,7 +1107,8 @@
                 <!-- Project Officer, NIC Asia Bank -->
                 <div class="timeline-item">
                     <div class="timeline-icon">
-                        <i class="fas fa-chart-line"></i>
+                        <!-- replaced icon with PNG -->
+                        <img src="images/nic.png" alt="NIC Asia Bank">
                     </div>
                     <div class="timeline-content">
                         <h3>Project Officer, NIC Asia Bank</h3>
@@ -1116,7 +1121,8 @@
                 <!-- Branch Manager, NIC Asia Bank Murgiya -->
                 <div class="timeline-item">
                     <div class="timeline-icon">
-                        <i class="fas fa-briefcase"></i>
+                        <!-- replaced icon with PNG -->
+                        <img src="images/nic-branch.png" alt="NIC Asia Bank Murgiya">
                     </div>
                     <div class="timeline-content">
                         <h3>Branch Manager, NIC Asia Bank Murgiya</h3>
@@ -1332,33 +1338,38 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Section switching
+    // Section switching -> changed to smooth scroll (no hiding)
     const navLinkElements = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
-    function activateSection(id) {
-        sections.forEach(s => s.classList.remove('active'));
-        const target = document.getElementById(id);
-        if (target) target.classList.add('active');
-        navLinkElements.forEach(a => a.classList.remove('active'));
-        document.querySelectorAll('.nav-link[href="#' + id + '"]').forEach(a => a.classList.add('active'));
-        // close mobile menu on selection
-        if (navLinks) navLinks.classList.remove('active');
-        // scroll to top of page
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
     navLinkElements.forEach(link => {
         link.addEventListener('click', e => {
             e.preventDefault();
-            const id = link.getAttribute('href').substring(1);
-            activateSection(id);
+            const href = link.getAttribute('href');
+            if (!href || !href.startsWith('#')) return;
+            const id = href.substring(1);
+            const target = document.getElementById(id);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else if (id === 'home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            // update active class on nav links
+            navLinkElements.forEach(a => a.classList.remove('active'));
+            link.classList.add('active');
+            // close mobile menu on selection
+            if (navLinks) navLinks.classList.remove('active');
             history.replaceState(null, '', '#' + id);
         });
     });
 
-    // On load, honor hash if present
+    // On load, honor hash if present (scroll to it)
     if (location.hash) {
         const id = location.hash.replace('#', '');
-        if (document.getElementById(id)) activateSection(id);
+        const target = document.getElementById(id);
+        if (target) {
+            setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+            // set active nav link
+            document.querySelectorAll('.nav-link[href="#' + id + '"]').forEach(a => a.classList.add('active'));
+        }
     }
 
     // Scroll Top Button
