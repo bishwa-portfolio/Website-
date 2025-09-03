@@ -1134,12 +1134,14 @@
 <!-- Fix timeline icons -->
 <style>
 .timeline-icon img {
-    width: 160px;          /* bigger size */
-    height: 160px;
-    object-fit: contain;   /* keeps logo proportion */
-    background: #f9f9f9;   /* light background for visibility */
+    width: auto;          /* let width adjust naturally */
+    height: auto;         /* let height adjust naturally */
+    max-width: 200px;     /* wide logos fit properly */
+    max-height: 120px;    /* keeps all logos balanced */
+    object-fit: contain;  /* ensures logos are never cut */
+    background: #fff;     
     border: 1px solid #ccc;
-    border-radius: 10px;   /* slight rounded corners */
+    padding: 6px;
     display: block;
     margin: 0 auto;
 }
